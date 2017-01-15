@@ -21,6 +21,6 @@ might find it helpful.
 
 #### Garmin
 
-* LIDAR-Lite v3
+* [LIDAR-Lite v3](lidar-lite-v3.md)
 
 
