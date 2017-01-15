@@ -27,4 +27,5 @@ range finder, it is necessary to install the Arduino Libaries
 ## Resources
 
 * [Product Page](https://buy.garmin.com/en-US/US/p/557294)
+* [Operation Manual and Technical Specifications](http://static.garmin.com/pumac/LIDAR_Lite_v3_Operation_Manual_and_Technical_Specifications.pdf)
 
