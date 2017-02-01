@@ -14,7 +14,7 @@ void setup() {
   Serial.print("Starting...\n");
   pixy.init();
   lidar.begin(0, true);
-  
+
 }
 
 void loop() {
@@ -24,31 +24,38 @@ void loop() {
   blocks = pixy.getBlocks();
   // PIXY STUFF
   String dir;
+  static int i = 0;
   int CenterOfBlocks;
-  Serial.println(blocks);
-  if(blocks == 1) {
-    CenterOfBlocks = pixy.blocks[0].x;
-  } else if(blocks == 2) {
-    CenterOfBlocks = (pixy.blocks[0].x + pixy.blocks[1].x) / 2;
-  }
-  if(blocks == 1 || blocks == 2){
-    dif = X_CENTER - CenterOfBlocks;
-    if(dif < -5) {
-      sprintf(buffer, "^%s~%s~%s", "PIXY", "direction", "right");
-      Serial.println(buffer);
-    } else if (dif > 5) {
-      sprintf(buffer, "^%s~%s~%s", "PIXY", "direction", "left");
-      Serial.println(buffer);
-    } else {
-      sprintf(buffer, "^%s~%s~%s", "PIXY", "direction", "straight");
-      Serial.println(buffer);
-   }
-  }
+  if (blocks) {
+    i++;
+    if (i % 30 == 0) {
+      //Serial.println("Block Count: " + String(blocks));
 
-  delay(500);
-  
 
- //LIDAR STUFF
-  sprintf(buffer, "^%s~%s~%d", "LIDAR", "cm", lidar.distance());
-  Serial.println(buffer);
+      if (blocks == 1) {
+        CenterOfBlocks = pixy.blocks[0].x;
+      } else if (blocks == 2) {
+        CenterOfBlocks = (pixy.blocks[0].x + pixy.blocks[1].x) / 2;
+      }
+      if (blocks == 1 || blocks == 2) {
+        dif = X_CENTER - CenterOfBlocks;
+        if (dif < -5) {
+          sprintf(buffer, "^%s~%s~%s", "PIXY", "direction", "right");
+          Serial.print(buffer);
+        } else if (dif > 5) {
+          sprintf(buffer, "^%s~%s~%s", "PIXY", "direction", "left");
+          Serial.print(buffer);
+        } else {
+          sprintf(buffer, "^%s~%s~%s", "PIXY", "direction", "straight");
+          Serial.print(buffer);
+        }
+
+      }
+      //LIDAR STUFF
+      sprintf(buffer, "^%s~%s~%d", "LIDAR", "cm", lidar.distance());
+      Serial.print(buffer);
+    }
+    
+  }
 }
+
