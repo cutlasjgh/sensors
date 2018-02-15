@@ -31,6 +31,25 @@ Note you will find that if you use the Analog voltage method, you will have to c
 
 * Allen-Bradley 873M
 
+aka our yellow cable proximity sensor
+
+model # 873M-D18AV300-D4 A 
+
+has a 30ms response time, 30mm - 300mm = 3cm-30cm , blind zone 0-3cm.
+
+operating voltage 15-30VDC, output voltage 0..10VDC
+
+uses cable 889D-F4AE-2
+
+http://literature.rockwellautomation.com/idc/groups/literature/documents/in/873m-in001_-en-p.pdf
+
+Power requirements: 12VDC or greater, output scales analog distance 0 to 10VDC.
+
+Note: values are undefined for less than 3cm.
+
+Alternative power methods on a FRC robot: you could try to power it using PMC? module of Robot, usually used for pneumatics, but if you are not using pneumantics, then you could use that power, or custom power ckt.
+Note you **must** use a voltage divider on the read side, if you plan to bring power back into roboRio.
+
 ### LIDAR
 
 #### Garmin
